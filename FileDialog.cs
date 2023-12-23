@@ -23,8 +23,6 @@ namespace VSmart_Editor
 		}
 		public void Render()
 		{
-			ImGui.SetNextWindowSize(new Vector2(horizontalExplorerSize * .5f, verticalExplorerSize));
-			ImGui.SetNextWindowPos(new Vector2(0, 0) + offset);
 			ImGui.Begin("File Dialog");
 			var drives = Directory.GetLogicalDrives();
 
@@ -34,14 +32,10 @@ namespace VSmart_Editor
 			}
 			ImGui.End();
 
-			ImGui.SetNextWindowSize(new Vector2(horizontalExplorerSize * 1.5f, verticalExplorerSize));
-			ImGui.SetNextWindowPos(new Vector2(horizontalExplorerSize * .5f, 0) + offset);
 			ImGui.Begin("tab");
 			RenderFolderView(folderViewTargetDirectory);
 			ImGui.End();
 
-			ImGui.SetNextWindowSize(new Vector2(horizontalExplorerSize * 2, 80));
-			ImGui.SetNextWindowPos(new Vector2(0, verticalExplorerSize) + offset);
 			ImGui.Begin("File");
 			ImGui.InputText("", ref selectedFileName, 8192);
 			ImGui.SameLine();

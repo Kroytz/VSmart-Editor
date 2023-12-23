@@ -127,9 +127,17 @@ namespace VSmart_Editor
 			if (ImGui.Button($"Delete##{GetHashCode()}"))
 			{
 				var target = Inspector.Instance.Target as SmartPropElement;
+
+				if (target == null)
+					return;
+
 				if (target is SmartPropRoot)
 					return;
 				var parent = target.Parent;
+
+				if (parent == null)
+					return;
+
 				parent.Children.InternalList.Remove(target);
 				Inspector.Instance.Target = parent;
 			}
@@ -157,6 +165,9 @@ namespace VSmart_Editor
 		{
 			foreach (var child in element.Children.InternalList)
 			{
+				//HACK: Make sure we have a parent
+				child.Parent = element;
+
 				//Make our pretty label with a unique hash
 				var label = $"{child.DisplayName} | {child.Label.Value}##{child.GetHashCode()}";
 				var open = ImGui.TreeNodeEx($"{label}##{child.GetHashCode()}", ImGuiTreeNodeFlags.OpenOnArrow | ImGuiTreeNodeFlags.FramePadding | ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.SpanFullWidth);
