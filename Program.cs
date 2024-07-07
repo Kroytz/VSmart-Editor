@@ -3,16 +3,17 @@ using ImGuiNET;
 using System.Diagnostics;
 using System.Numerics;
 using GLFW;
+using System.Windows;
 
 namespace VSmart_Editor;
 
 
 public class Program : Overlay
 {
-    string LastExportedPath = string.Empty;
-    private static ImFontPtr font;
+    static string LastExportedPath = string.Empty;
+	private static ImFontPtr font;
 
-
+	
     public override Task Run()
 	{
 		
@@ -156,7 +157,13 @@ public class Program : Overlay
 			ImGui.EndMainMenuBar();
     }
 				*/
+
+
         ImGui.Begin("Inspector");
+        if (ImGui.Button("QUIT"))
+        {
+            Environment.Exit(0);
+        }
         Inspector.Instance.Render();
 		ImGui.End();
 
@@ -166,8 +173,8 @@ public class Program : Overlay
 
 		if (ObjectSelector.Instance is not null)
 			ObjectSelector.Instance.Render();
-
-		if (FileDialog.Instance is not null)
+ 
+        if (FileDialog.Instance is not null)
 			FileDialog.Instance.Render();
 
 		if (Session.Instance.ShowDebugInfo)
@@ -180,13 +187,13 @@ public class Program : Overlay
 			}
 			ImGui.End();
 		}
-		
-	}
+       
+    }
+	
 
 
 
-
-    void ExportToVsmart(string filePath)
+    public static void ExportToVsmart(string filePath)
 	{
 		LastExportedPath = filePath;
 		var data = Serializer.SerializeMain(Session.Instance.Root);
@@ -203,15 +210,10 @@ public class Program : Overlay
 		Inspector inspector = new Inspector();
 		Hierarchy hierarchy = new Hierarchy();
 
-		program.Start().Wait();
+        program.Start().Wait();
 
-		
         Application.Run(new FormMenu());
 
     }
-	public static void LoadFile()
-	{
 
-
-    }
 }

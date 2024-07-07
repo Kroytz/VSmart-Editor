@@ -65,7 +65,9 @@ namespace VSmart_Editor
 					string filePath = openFileDialog.FileName;
                     LoadCallback(filePath);
                 }
-
+				ToolStripMenuItem item = new ToolStripMenuItem();
+				item.Text = openFileDialog.FileName;
+				
             }));
 
             t.SetApartmentState(ApartmentState.STA);
@@ -97,12 +99,28 @@ namespace VSmart_Editor
 
 			File.WriteAllText(path, "");
 			Save(path);
+			
 		}
 
 		public void SaveAs()
 		{
-			string[] files = { ProjectFileExtension };
-			var dialog = new FileDialog("Save", SaveAsCallback, files);
-		}
-	}
+            //string[] files = { ProjectFileExtension };
+            //var dialog = new FileDialog("Save", SaveAsCallback, files);
+            var t = new Thread((ThreadStart)(() => {
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+			saveFileDialog.Filter = ProjectFileExtension;
+            //saveFileDialog.ShowDialog();
+				if (saveFileDialog.ShowDialog() == DialogResult.OK)
+				{
+                    SaveAsCallback(saveFileDialog.FileName);
+                }
+                
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+        }
+
+    }
 }

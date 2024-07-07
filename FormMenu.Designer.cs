@@ -32,6 +32,7 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             newToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
+            recentFilesToolStripMenuItem = new ToolStripMenuItem();
             reloadToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             saveAsToolStripMenuItem = new ToolStripMenuItem();
@@ -41,21 +42,22 @@
             showDebugInfoToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             documentationToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, exportToolStripMenuItem, debugToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, exportToolStripMenuItem, debugToolStripMenuItem, helpToolStripMenuItem, toolStripMenuItem1 });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(234, 24);
+            menuStrip1.Size = new System.Drawing.Size(244, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, reloadToolStripMenuItem, saveToolStripMenuItem, saveAsToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, recentFilesToolStripMenuItem, reloadToolStripMenuItem, saveToolStripMenuItem, saveAsToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             fileToolStripMenuItem.Text = "&File";
@@ -63,35 +65,42 @@
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            newToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             newToolStripMenuItem.Text = "New";
             newToolStripMenuItem.Click += newToolStripMenuItem_Click;
             // 
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            openToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             openToolStripMenuItem.Text = "Open";
             openToolStripMenuItem.Click += openToolStripMenuItem_Click;
+            // 
+            // recentFilesToolStripMenuItem
+            // 
+            recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
+            recentFilesToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            recentFilesToolStripMenuItem.Text = "Recent files";
             // 
             // reloadToolStripMenuItem
             // 
             reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            reloadToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             reloadToolStripMenuItem.Text = "Reload";
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            saveToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            saveAsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             saveAsToolStripMenuItem.Text = "Save as";
+            saveAsToolStripMenuItem.Click += saveAsToolStripMenuItem_Click;
             // 
             // exportToolStripMenuItem
             // 
@@ -103,7 +112,7 @@
             // exportAsVsmartToolStripMenuItem
             // 
             exportAsVsmartToolStripMenuItem.Name = "exportAsVsmartToolStripMenuItem";
-            exportAsVsmartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            exportAsVsmartToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             exportAsVsmartToolStripMenuItem.Text = "Export as vsmart";
             exportAsVsmartToolStripMenuItem.Click += exportAsVsmartToolStripMenuItem_Click;
             // 
@@ -118,7 +127,7 @@
             // 
             showDebugInfoToolStripMenuItem.CheckOnClick = true;
             showDebugInfoToolStripMenuItem.Name = "showDebugInfoToolStripMenuItem";
-            showDebugInfoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            showDebugInfoToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             showDebugInfoToolStripMenuItem.Text = "Show debug info";
             showDebugInfoToolStripMenuItem.Click += showDebugInfoToolStripMenuItem_Click;
             // 
@@ -134,17 +143,25 @@
             documentationToolStripMenuItem.Name = "documentationToolStripMenuItem";
             documentationToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             documentationToolStripMenuItem.Text = "Documentation";
+            documentationToolStripMenuItem.Click += documentationToolStripMenuItem_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
             // FormMenu
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(234, 21);
+            ClientSize = new System.Drawing.Size(244, 46);
+            ControlBox = false;
             Controls.Add(menuStrip1);
+            ForeColor = System.Drawing.Color.DarkGray;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
-            MinimumSize = new System.Drawing.Size(250, 60);
+            MinimumSize = new System.Drawing.Size(250, 30);
             Name = "FormMenu";
             ShowIcon = false;
             Text = "File Manager";
@@ -170,5 +187,7 @@
         private ToolStripMenuItem showDebugInfoToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem documentationToolStripMenuItem;
+        private ToolStripMenuItem recentFilesToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
