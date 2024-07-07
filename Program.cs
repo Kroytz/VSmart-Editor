@@ -2,22 +2,75 @@
 using ImGuiNET;
 using System.Diagnostics;
 using System.Numerics;
+using GLFW;
 
 namespace VSmart_Editor;
 
+
 public class Program : Overlay
 {
-	public override Task Run()
+    string LastExportedPath = string.Empty;
+    private static ImFontPtr font;
+
+
+    public override Task Run()
 	{
-		ImGui.SetWindowSize(new Vector2(2, 2));
+		
+        ImGui.SetWindowSize(new Vector2(2, 2));
 		return base.Run();
 	}
-	string LastExportedPath = string.Empty;
-	protected override void Render()
+
+
+    protected override void Render()
 	{
-		if (ImGui.BeginMainMenuBar())
+        ImGuiStylePtr style = ImGui.GetStyle();
+        style.FrameRounding = 2;
+
+		Vector4 buttonColor = new Vector4(0.3f, 0.3f, 0.3f, 1);
+        Vector4 buttonHoverColor =  new Vector4(0.2f, 0.6f, 0.4f, 1);
+        Vector4 buttonActiveColor = new Vector4(0.5f, 0.7f, 0.5f, 1);
+
+		Vector4 backgroundColor = new Vector4(0.11f, 0.1f, 0.1f, 1f);
+
+        Vector4 miscHoverColor = new Vector4(0.15f, 0.15f, 0.15f, 1f);
+
+        Vector4 textColor = new Vector4(1, 0.95f, 0.85f, 1);
+
+		style.Colors[(int)ImGuiCol.Text] = textColor;
+		style.Colors[(int)ImGuiCol.Header] = new Vector4(0.2f,0.2f,0.2f, 1);
+        style.Colors[(int)ImGuiCol.Border] = new Vector4(0.5f, 0.5f, 0.5f, 0.5f);
+
+		style.Colors[(int)ImGuiCol.Button] = buttonColor;
+		style.Colors[(int)ImGuiCol.ButtonHovered] = buttonHoverColor;
+		style.Colors[(int)ImGuiCol.ButtonActive] = buttonActiveColor;
+
+		style.Colors[(int)ImGuiCol.TitleBg] = backgroundColor;
+		style.Colors[(int)ImGuiCol.TitleBgActive] = miscHoverColor;
+
+
+        style.Colors[(int)ImGuiCol.Header] = new Vector4(0.40f, 0.42f, 0.42f, 1);
+        style.Colors[(int)ImGuiCol.HeaderHovered] = buttonHoverColor;
+        style.Colors[(int)ImGuiCol.HeaderActive] = buttonActiveColor;
+
+        style.Colors[(int)ImGuiCol.TabUnfocusedActive] = miscHoverColor;
+        style.Colors[(int)ImGuiCol.TabActive] = buttonActiveColor;
+        style.Colors[(int)ImGuiCol.TabHovered] = buttonActiveColor;
+
+        style.Colors[(int)ImGuiCol.MenuBarBg] = backgroundColor;
+		style.Colors[(int)ImGuiCol.WindowBg] = backgroundColor;
+        style.Colors[(int)ImGuiCol.FrameBg] = new Vector4(0.25f, 0.25f, 0.3f, 1f);
+
+        style.Colors[(int)ImGuiCol.Separator] = new Vector4(0.2f, 0.2f, 0.2f, 1f);
+        style.Colors[(int)ImGuiCol.ResizeGrip] = new Vector4(0.2f, 0.2f, 0.2f, 1f);
+        ReplaceFont("C:\\WINDOWS\\Fonts\\Arial.ttf", 24, FontGlyphRangeType.English);
+
+
+        /*
+        if (ImGui.BeginMainMenuBar())
 		{
-			if (ImGui.BeginMenu("File"))
+			
+            
+            if (ImGui.BeginMenu("File"))
 			{
 				if (ImGui.Button("New"))
 				{
@@ -25,15 +78,17 @@ public class Program : Overlay
 				}
 				if (ImGui.Button("Open"))
 				{
-					Session.Instance.Load();
-				}
+                    Session.Instance.Load();
+                    
+                }
 				if (ImGui.Button("Reload From Disk"))
 				{
 					Session.Instance.ReloadFromDisk();
 				}
 				if (ImGui.Button("Save"))
 				{
-					Session.Instance.Save(Session.Instance.CurrentProjectFile);
+
+                    Session.Instance.Save(Session.Instance.CurrentProjectFile);
 				}
 				if (ImGui.Button("Save As"))
 				{
@@ -86,8 +141,8 @@ public class Program : Overlay
 			if (nameIndex >= 0 && (nameIndex + 1) < titleText.Length)
 				titleText = titleText.Substring(nameIndex + 1);
 
-			var windowWidth = ImGui.GetWindowWidth();
-			var textWidth = ImGui.CalcTextSize(titleText);
+            var windowWidth = ImGui.GetWindowWidth();
+            var textWidth = ImGui.CalcTextSize(titleText);
 			ImGui.SetCursorPosX((windowWidth - textWidth.X) / 2);
 			ImGui.Text(titleText);
 
@@ -99,10 +154,10 @@ public class Program : Overlay
 			}
 
 			ImGui.EndMainMenuBar();
-		}
-
-		ImGui.Begin("Inspector");
-		Inspector.Instance.Render();
+    }
+				*/
+        ImGui.Begin("Inspector");
+        Inspector.Instance.Render();
 		ImGui.End();
 
 		ImGui.Begin("Hierarchy");
@@ -125,23 +180,38 @@ public class Program : Overlay
 			}
 			ImGui.End();
 		}
-
+		
 	}
 
-	void ExportToVsmart(string filePath)
+
+
+
+    void ExportToVsmart(string filePath)
 	{
 		LastExportedPath = filePath;
 		var data = Serializer.SerializeMain(Session.Instance.Root);
 		File.WriteAllText(filePath, data);
 	}
 
+
 	public static void Main(string[] args)
 	{
+		
+
 		Program program = new Program();
 		Session session = new Session();
 		Inspector inspector = new Inspector();
 		Hierarchy hierarchy = new Hierarchy();
 
 		program.Start().Wait();
-	}
+
+		
+        Application.Run(new FormMenu());
+
+    }
+	public static void LoadFile()
+	{
+
+
+    }
 }

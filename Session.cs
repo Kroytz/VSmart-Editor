@@ -1,13 +1,15 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Windows.Forms;
 using VSmart_Editor.Elements;
+
 
 namespace VSmart_Editor
 {
 	public class Session
 	{
 		public static Session Instance;
-		[JsonIgnore] public static string ProjectFileExtension => "smartproj";
+		[JsonIgnore] public static string ProjectFileExtension => "smart prop project (*.smartproj)|*.smartproj";
 		[JsonIgnore] public string CurrentProjectFile { get; set; }
 		[JsonIgnore] public bool ShowDebugInfo = false;
 		public SmartPropRoot Root { get; set; }
@@ -48,12 +50,29 @@ namespace VSmart_Editor
 		}
 
 
-		public void Load()
+        public void Load()
 		{
-			string[] files = { ProjectFileExtension };
-			var dialog = new FileDialog("Open", LoadCallback, files);
-		}
-		public void Save(string filePath)
+            //string[] files = { ProjectFileExtension };
+            //var dialog = new FileDialog("Open", LoadCallback, files);
+
+
+            var t = new Thread((ThreadStart)(() => {
+
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+				openFileDialog.Filter = ProjectFileExtension;
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					string filePath = openFileDialog.FileName;
+                    LoadCallback(filePath);
+                }
+
+            }));
+
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
+        }
+        public void Save(string filePath)
 		{
 			if (!File.Exists(filePath))
 			{
