@@ -43,6 +43,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             documentationToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
+            reExportToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -104,7 +105,7 @@
             // 
             // exportToolStripMenuItem
             // 
-            exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportAsVsmartToolStripMenuItem });
+            exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportAsVsmartToolStripMenuItem, reExportToolStripMenuItem });
             exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             exportToolStripMenuItem.Text = "Export";
@@ -112,7 +113,7 @@
             // exportAsVsmartToolStripMenuItem
             // 
             exportAsVsmartToolStripMenuItem.Name = "exportAsVsmartToolStripMenuItem";
-            exportAsVsmartToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            exportAsVsmartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             exportAsVsmartToolStripMenuItem.Text = "Export as vsmart";
             exportAsVsmartToolStripMenuItem.Click += exportAsVsmartToolStripMenuItem_Click;
             // 
@@ -150,11 +151,18 @@
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
+            // reExportToolStripMenuItem
+            // 
+            reExportToolStripMenuItem.Name = "reExportToolStripMenuItem";
+            reExportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            reExportToolStripMenuItem.Text = "Re-export";
+            reExportToolStripMenuItem.Click += reExportToolStripMenuItem_Click;
+            // 
             // FormMenu
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(244, 46);
+            ClientSize = new System.Drawing.Size(244, 42);
             ControlBox = false;
             Controls.Add(menuStrip1);
             ForeColor = System.Drawing.Color.DarkGray;
@@ -189,5 +197,6 @@
         private ToolStripMenuItem documentationToolStripMenuItem;
         private ToolStripMenuItem recentFilesToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem reExportToolStripMenuItem;
     }
 }

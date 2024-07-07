@@ -89,5 +89,13 @@ namespace VSmart_Editor
             };
             Process.Start(psi);
         }
+
+        private void reExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Program.LastExportedPath != string.Empty)
+            {
+                Program.ExportToVsmart(Program.LastExportedPath);
+            }
+        }
     }
 }

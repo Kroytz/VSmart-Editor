@@ -10,7 +10,7 @@ namespace VSmart_Editor;
 
 public class Program : Overlay
 {
-    static string LastExportedPath = string.Empty;
+    public static string LastExportedPath = string.Empty;
 	private static ImFontPtr font;
 
 	
