@@ -1,4 +1,4 @@
-﻿using ImGuiNET;
+using ImGuiNET;
 
 namespace VSmart_Editor.Types
 {
@@ -8,10 +8,6 @@ namespace VSmart_Editor.Types
 		public int AllowedChoices { get; set; }
 		public SmartProperty ChildProperty { get; set; }
 
-		public AttributeChoice()
-		{
-
-		}
 
 		public AttributeChoice(Choice startingChoice, int whitelist)
 		{
@@ -187,6 +183,11 @@ namespace VSmart_Editor.Types
 				return "";
 
 			return serializer.Serialize();
+		}
+
+		public string GetSelectedChoice()
+		{
+			return SelectedChoice.ToString();
 		}
 
 		void SelectNewType()

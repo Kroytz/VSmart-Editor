@@ -32,8 +32,8 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             newToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
-            recentFilesToolStripMenuItem = new ToolStripMenuItem();
-            reloadToolStripMenuItem = new ToolStripMenuItem();
+            //recentFilesToolStripMenuItem = new ToolStripMenuItem();
+            //reloadToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             saveAsToolStripMenuItem = new ToolStripMenuItem();
             exportToolStripMenuItem = new ToolStripMenuItem();
@@ -42,14 +42,14 @@
             showDebugInfoToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             documentationToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
+            //toolStripMenuItem1 = new ToolStripMenuItem();     //TODO:What is this todo for?
             reExportToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, exportToolStripMenuItem, debugToolStripMenuItem, helpToolStripMenuItem, toolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, exportToolStripMenuItem, debugToolStripMenuItem, helpToolStripMenuItem, /*toolStripMenuItem1*/ });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(244, 24);
@@ -58,7 +58,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, recentFilesToolStripMenuItem, reloadToolStripMenuItem, saveToolStripMenuItem, saveAsToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, /*recentFilesToolStripMenuItem, reloadToolStripMenuItem,*/ saveToolStripMenuItem, saveAsToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             fileToolStripMenuItem.Text = "&File";
@@ -79,15 +79,15 @@
             // 
             // recentFilesToolStripMenuItem
             // 
-            recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
-            recentFilesToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            recentFilesToolStripMenuItem.Text = "Recent files";
+            // recentFilesToolStripMenuItem.Name = "recentFilesToolStripMenuItem";
+            // recentFilesToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            // recentFilesToolStripMenuItem.Text = "Recent files";
             // 
             // reloadToolStripMenuItem
             // 
-            reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
-            reloadToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
-            reloadToolStripMenuItem.Text = "Reload";
+            // reloadToolStripMenuItem.Name = "reloadToolStripMenuItem";
+            // reloadToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            // reloadToolStripMenuItem.Text = "Reload";
             // 
             // saveToolStripMenuItem
             // 
@@ -148,8 +148,8 @@
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            //toolStripMenuItem1.Name = "toolStripMenuItem1";
+            //toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
             // 
             // reExportToolStripMenuItem
             // 
@@ -169,7 +169,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
-            MinimumSize = new System.Drawing.Size(250, 30);
+            MinimumSize = new System.Drawing.Size(240, 60); //TODO:How to display auto-filling
             Name = "FormMenu";
             ShowIcon = false;
             Text = "File Manager";
@@ -187,7 +187,7 @@
         private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
-        private ToolStripMenuItem reloadToolStripMenuItem;
+        //private ToolStripMenuItem reloadToolStripMenuItem;
         private ToolStripMenuItem saveAsToolStripMenuItem;
         private ToolStripMenuItem exportToolStripMenuItem;
         private ToolStripMenuItem exportAsVsmartToolStripMenuItem;
@@ -195,8 +195,8 @@
         private ToolStripMenuItem showDebugInfoToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem documentationToolStripMenuItem;
-        private ToolStripMenuItem recentFilesToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem1;
+        //private ToolStripMenuItem recentFilesToolStripMenuItem;
+        //private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem reExportToolStripMenuItem;
     }
 }

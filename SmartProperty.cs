@@ -16,6 +16,7 @@ namespace VSmart_Editor.Types
 	[JsonDerivedType(typeof(AttributeVariableNameReference), "variable_name_reference")]
 	[JsonDerivedType(typeof(AttributeVariableSource), "variable_source")]
 	[JsonDerivedType(typeof(AttributeVariableValue), "variable_value")]
+	[JsonDerivedType(typeof(AttributeSetVariableValue), "set_variable_value")]
 	[JsonDerivedType(typeof(AttributeVector3D), "vector3D")]
 	public class SmartProperty
 
