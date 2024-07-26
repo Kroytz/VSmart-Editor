@@ -59,9 +59,8 @@ namespace VSmart_Editor
         {
             var t = new Thread((ThreadStart)(() =>
             {
-
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "valve smart prop (*.vsmart)|*.vsmart";
+                saveFileDialog.Filter = "Valve smart prop (*.vsmart)|*.vsmart";
                 //saveFileDialog.ShowDialog();
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -96,6 +95,23 @@ namespace VSmart_Editor
             {
                 Program.ExportToVsmart(Program.LastExportedPath);
             }
+        }
+
+        private void importFromVsmartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var t = new Thread((ThreadStart)(() =>
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Valve smart prop (*.vsmart)|*.vsmart";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    Program.ImportFromVsmart(dialog.FileName);
+                }
+
+            }));
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+            t.Join();
         }
     }
 }

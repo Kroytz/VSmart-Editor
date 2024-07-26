@@ -8,6 +8,7 @@ using SkiaSharp;
 using ValveResourceFormat.CompiledShader;
 using ValveResourceFormat.ThirdParty;
 using ValveResourceFormat.Utils;
+using Image = SharpGLTF.Schema2.Image;
 using VMaterial = ValveResourceFormat.ResourceTypes.Material;
 
 namespace ValveResourceFormat.IO;
